@@ -688,6 +688,23 @@
                     <i class="bi bi-plus-circle-fill"></i> Tambah Siswa
                 </a>
             </li>
+            <li style="margin-left: 1rem; border-left: 1px solid var(--border); padding-left: 1rem; display: flex; align-items: center; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary-light); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+                        {{ mb_strtoupper(mb_substr(Auth::user()->name, 0, 1)) }}
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); line-height: 1;">{{ Auth::user()->name }}</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Admin</span>
+                    </div>
+                </div>
+                <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-danger" style="padding: 6px 10px; font-size: 0.8rem;" title="Logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                </form>
+            </li>
         </ul>
     </div>
 </nav>
