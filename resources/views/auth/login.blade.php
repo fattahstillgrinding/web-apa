@@ -507,7 +507,7 @@
                         <i class="bi bi-envelope input-icon"></i>
                         <input type="email" id="email" name="email" value="{{ old('email') }}"
                             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                            placeholder="admin@sekolah.com" autocomplete="email" autofocus>
+                            placeholder="username or email" autocomplete="email" autofocus>
                     </div>
                     @error('email')
                         <div class="invalid-feedback"><i class="bi bi-exclamation-circle"></i> {{ $message }}</div>
@@ -547,7 +547,9 @@
 
                 <div style="text-align: center; margin-top: 1rem;">
                     <span style="color: var(--text-muted); font-size: 0.9rem;">Belum punya akun? </span>
-                    <a href="{{ route('register') }}" style="color: var(--primary-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s;">Daftar Sekarang</a>
+                    <a href="{{ route('register') }}"
+                        style="color: var(--primary-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s;">Daftar
+                        Sekarang</a>
                 </div>
             </form>
         </div>
