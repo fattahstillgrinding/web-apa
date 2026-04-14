@@ -706,14 +706,21 @@
             }
         }
 
-        // Loading state on submit
-        document.getElementById('registerForm').addEventListener('submit', function () {
+        // Loading state on submit with 5 seconds delay
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Mencegah form tersubmit seketika
+
             // Show overlay
             document.getElementById('loading-overlay').classList.add('active');
             
             // Disable button
             const btn = document.getElementById('registerBtn');
             btn.disabled = true;
+
+            // Delay 5 detik (5000 md) sebelum submit manual
+            setTimeout(() => {
+                this.submit();
+            }, 5000);
         });
     </script>
 </body>
