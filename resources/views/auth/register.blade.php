@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Sistem Data Siswa</title>
-    <meta name="description" content="Login ke Sistem Data Siswa">
+    <title>Daftar | Sistem Data Siswa</title>
+    <meta name="description" content="Daftar ke Sistem Data Siswa">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,8 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            padding: 2rem 0;
         }
 
         /* ── Animated background ── */
@@ -129,7 +130,7 @@
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 440px;
+            max-width: 480px;
             padding: 1rem;
         }
 
@@ -309,6 +310,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            margin-top: 4px;
         }
 
         /* Toggle password */
@@ -339,27 +341,6 @@
             color: var(--primary-light);
         }
 
-        /* Remember me */
-        .remember-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        .remember-row input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
-
-        .remember-row label {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
-
         /* Submit button */
         .btn-login {
             width: 100%;
@@ -379,15 +360,12 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
             letter-spacing: 0.02em;
+            margin-top: 1rem;
         }
 
         .btn-login:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
-        }
-
-        .btn-login:active {
-            transform: translateY(0);
         }
 
         .btn-login:disabled {
@@ -422,41 +400,6 @@
         .divider::after {
             right: 0;
         }
-
-        /* Hint box */
-        .hint-box {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin-top: 1.25rem;
-        }
-
-        .hint-box-title {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--primary-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .hint-box p {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .hint-box code {
-            background: rgba(99, 102, 241, 0.15);
-            padding: 1px 6px;
-            border-radius: 4px;
-            color: var(--primary-light);
-            font-size: 0.82rem;
-        }
     </style>
 </head>
 
@@ -475,30 +418,29 @@
             {{-- Brand --}}
             <div class="brand">
                 <div class="brand-logo">
-                    <i class="bi bi-mortarboard-fill"></i>
+                    <i class="bi bi-person-plus-fill"></i>
                 </div>
-                <h1>Sistem Data Siswa</h1>
-                <p>Masuk untuk mengakses dashboard</p>
+                <h1>Daftar Akun</h1>
+                <p>Silakan buat akun baru Anda</p>
             </div>
 
-            {{-- Flash messages --}}
-            @if(session('success'))
-                <div class="alert alert-success">
-                    <i class="bi bi-check-circle-fill"></i>
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if($errors->has('email') && !$errors->has('password'))
-                <div class="alert alert-danger">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    {{ $errors->first('email') }}
-                </div>
-            @endif
-
-            {{-- Login Form --}}
-            <form id="loginForm" action="{{ route('login.post') }}" method="POST" novalidate>
+            {{-- Form Registrasi --}}
+            <form id="registerForm" action="{{ route('register.post') }}" method="POST" novalidate>
                 @csrf
+
+                {{-- Nama Lengkap --}}
+                <div class="form-group">
+                    <label for="name" class="form-label"><i class="bi bi-person"></i> Nama Lengkap</label>
+                    <div class="input-wrap">
+                        <i class="bi bi-person input-icon"></i>
+                        <input type="text" id="name" name="name" value="{{ old('name') }}"
+                            class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Username"
+                            autocomplete="name" autofocus>
+                    </div>
+                    @error('name')
+                        <div class="invalid-feedback"><i class="bi bi-exclamation-circle"></i> {{ $message }}</div>
+                    @enderror
+                </div>
 
                 {{-- Email --}}
                 <div class="form-group">
@@ -507,7 +449,7 @@
                         <i class="bi bi-envelope input-icon"></i>
                         <input type="email" id="email" name="email" value="{{ old('email') }}"
                             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                            placeholder="admin@sekolah.com" autocomplete="email" autofocus>
+                            placeholder="your@gmail.com" autocomplete="email">
                     </div>
                     @error('email')
                         <div class="invalid-feedback"><i class="bi bi-exclamation-circle"></i> {{ $message }}</div>
@@ -521,9 +463,10 @@
                         <i class="bi bi-lock input-icon"></i>
                         <input type="password" id="password" name="password"
                             class="form-control input-pw {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                            placeholder="••••••••" autocomplete="current-password">
-                        <button type="button" class="toggle-pass" id="togglePass" tabindex="-1">
-                            <i class="bi bi-eye" id="eyeIcon"></i>
+                            placeholder="••••••••" autocomplete="new-password">
+                        <button type="button" class="toggle-pass" onclick="togglePassword('password', 'eyeIcon1')"
+                            tabindex="-1">
+                            <i class="bi bi-eye" id="eyeIcon1"></i>
                         </button>
                     </div>
                     @error('password')
@@ -531,23 +474,33 @@
                     @enderror
                 </div>
 
-                {{-- Remember Me --}}
-                <div class="remember-row">
-                    <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label for="remember">Ingat saya selama 30 hari</label>
+                {{-- Konfirmasi Password --}}
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label"><i class="bi bi-shield-check"></i> Ulangi
+                        Password</label>
+                    <div class="input-wrap input-wrap-pw">
+                        <i class="bi bi-shield-check input-icon"></i>
+                        <input type="password" id="password_confirmation" name="password_confirmation"
+                            class="form-control input-pw" placeholder="••••••••" autocomplete="new-password">
+                        <button type="button" class="toggle-pass"
+                            onclick="togglePassword('password_confirmation', 'eyeIcon2')" tabindex="-1">
+                            <i class="bi bi-eye" id="eyeIcon2"></i>
+                        </button>
+                    </div>
                 </div>
 
                 {{-- Submit --}}
-                <button type="submit" class="btn-login" id="loginBtn">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    Masuk ke Dashboard
+                <button type="submit" class="btn-login" id="registerBtn">
+                    <i class="bi bi-person-plus-fill"></i>
+                    Daftar Sekarang
                 </button>
 
                 <div class="divider">atau</div>
 
                 <div style="text-align: center; margin-top: 1rem;">
-                    <span style="color: var(--text-muted); font-size: 0.9rem;">Belum punya akun? </span>
-                    <a href="{{ route('register') }}" style="color: var(--primary-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s;">Daftar Sekarang</a>
+                    <span style="color: var(--text-muted); font-size: 0.9rem;">Sudah punya akun? </span>
+                    <a href="{{ route('login') }}"
+                        style="color: var(--primary-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s;">Masuk</a>
                 </div>
             </form>
         </div>
@@ -555,28 +508,26 @@
 
     <script>
         // Toggle show/hide password
-        const toggleBtn = document.getElementById('togglePass');
-        const pwInput = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
 
-        toggleBtn.addEventListener('click', function () {
-            if (pwInput.type === 'password') {
-                pwInput.type = 'text';
-                eyeIcon.className = 'bi bi-eye-slash';
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'bi bi-eye-slash';
             } else {
-                pwInput.type = 'password';
-                eyeIcon.className = 'bi bi-eye';
+                input.type = 'password';
+                icon.className = 'bi bi-eye';
             }
-        });
+        }
 
         // Loading state on submit
-        document.getElementById('loginForm').addEventListener('submit', function () {
-            const btn = document.getElementById('loginBtn');
-            btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Memverifikasi...';
+        document.getElementById('registerForm').addEventListener('submit', function () {
+            const btn = document.getElementById('registerBtn');
+            btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Mendaftar...';
             btn.disabled = true;
         });
     </script>
-
 </body>
 
 </html>
