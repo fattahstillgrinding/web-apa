@@ -16,20 +16,20 @@
 
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary: #8b5cf6;
+            --primary: #ffffff;
+            --primary-dark: #d4d4d8;
+            --primary-light: #f4f4f5;
+            --secondary: #a1a1aa;
             --danger: #ef4444;
             --success: #10b981;
-            --bg-base: #0f0f1a;
-            --bg-card: #1a1a2e;
-            --bg-input: #0d0d1b;
-            --border: rgba(99, 102, 241, 0.2);
-            --border-hover: rgba(99, 102, 241, 0.5);
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --bg-base: #000000;
+            --bg-card: #09090b;
+            --bg-input: #18181b;
+            --border: rgba(255, 255, 255, 0.15);
+            --border-hover: rgba(255, 255, 255, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
         }
 
         *,
@@ -67,7 +67,7 @@
             left: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: floatGlow 8s ease-in-out infinite alternate;
         }
 
@@ -77,7 +77,7 @@
             right: -10%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.14) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
             animation: floatGlow 10s ease-in-out infinite alternate-reverse;
         }
 
@@ -88,7 +88,7 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
             animation: pulse 6s ease-in-out infinite;
         }
 
@@ -119,7 +119,7 @@
             content: '';
             position: fixed;
             inset: 0;
-            background-image: radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: 0;
             pointer-events: none;
@@ -135,14 +135,14 @@
         }
 
         .login-card {
-            background: rgba(26, 26, 46, 0.85);
+            background: rgba(9, 9, 11, 0.85);
             backdrop-filter: blur(24px);
             border: 1px solid var(--border);
             border-radius: 24px;
             padding: 2.5rem;
             box-shadow:
-                0 8px 40px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(99, 102, 241, 0.05) inset;
+                0 8px 40px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
             animation: cardIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -168,15 +168,16 @@
             width: 64px;
             height: 64px;
             border-radius: 18px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-base);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             margin: 0 auto 1rem;
             box-shadow:
-                0 0 30px rgba(99, 102, 241, 0.4),
-                0 8px 20px rgba(0, 0, 0, 0.3);
+                0 0 30px rgba(255, 255, 255, 0.1),
+                0 8px 20px rgba(0, 0, 0, 0.5);
             animation: logoPulse 3s ease-in-out infinite;
         }
 
@@ -184,11 +185,11 @@
 
             0%,
             100% {
-                box-shadow: 0 0 30px rgba(99, 102, 241, 0.4), 0 8px 20px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.5);
             }
 
             50% {
-                box-shadow: 0 0 50px rgba(99, 102, 241, 0.6), 0 8px 20px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.2), 0 8px 20px rgba(0, 0, 0, 0.5);
             }
         }
 
@@ -196,7 +197,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #e2e8f0 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -291,7 +292,7 @@
 
         .form-control:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
         }
 
         .form-control:focus+.input-icon-right,
@@ -345,8 +346,8 @@
         .btn-login {
             width: 100%;
             padding: 13px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-base);
             border: none;
             border-radius: 10px;
             font-size: 0.97rem;
@@ -358,14 +359,14 @@
             justify-content: center;
             gap: 8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
             letter-spacing: 0.02em;
             margin-top: 1rem;
         }
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
         }
 
         .btn-login:disabled {
@@ -404,7 +405,7 @@
         #loading-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 15, 26, 0.85); /* Matches --bg-base with opacity */
+            background: rgba(0, 0, 0, 0.85); /* Matches --bg-base with opacity */
             backdrop-filter: blur(8px);
             z-index: 9999;
             display: none; /* hidden by default */
@@ -419,9 +420,9 @@
 
         /* From Uiverse.io by mobinkakei */
         #wifi-loader {
-            --background: #62abff;
+            --background: #333333;
             --front-color: var(--primary);
-            --back-color: rgba(99, 102, 241, 0.2);
+            --back-color: rgba(255, 255, 255, 0.2);
             --text-color: var(--text-primary);
             width: 64px;
             height: 64px;

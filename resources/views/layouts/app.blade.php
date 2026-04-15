@@ -19,29 +19,29 @@
            DESIGN TOKENS & ROOT VARIABLES
         ============================================================ */
         :root {
-            --primary:       #6366f1;
-            --primary-dark:  #4f46e5;
-            --primary-light: #818cf8;
-            --secondary:     #8b5cf6;
-            --accent:        #06b6d4;
+            --primary:       #ffffff;
+            --primary-dark:  #d4d4d8;
+            --primary-light: #f4f4f5;
+            --secondary:     #a1a1aa;
+            --accent:        #52525b;
             --success:       #10b981;
             --danger:        #ef4444;
             --warning:       #f59e0b;
             --info:          #3b82f6;
 
-            --bg-base:       #0f0f1a;
-            --bg-card:       #1a1a2e;
-            --bg-card2:      #16213e;
-            --bg-input:      #0d0d1b;
-            --border:        rgba(99,102,241,0.2);
-            --border-hover:  rgba(99,102,241,0.5);
+            --bg-base:       #000000;
+            --bg-card:       #09090b;
+            --bg-card2:      #18181b;
+            --bg-input:      #09090b;
+            --border:        rgba(255,255,255,0.15);
+            --border-hover:  rgba(255,255,255,0.3);
 
-            --text-primary:  #e2e8f0;
-            --text-secondary:#94a3b8;
-            --text-muted:    #64748b;
+            --text-primary:  #ffffff;
+            --text-secondary:#a1a1aa;
+            --text-muted:    #71717a;
 
-            --shadow-glow:   0 0 30px rgba(99,102,241,0.15);
-            --shadow-card:   0 4px 24px rgba(0,0,0,0.4);
+            --shadow-glow:   0 0 30px rgba(255,255,255,0.1);
+            --shadow-card:   0 4px 24px rgba(0,0,0,0.8);
             --radius:        14px;
             --radius-sm:     8px;
             --radius-lg:     20px;
@@ -60,8 +60,8 @@
             color: var(--text-primary);
             min-height: 100vh;
             background-image:
-                radial-gradient(ellipse at 20% 0%, rgba(99,102,241,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(139,92,246,0.1) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(255,255,255,0.05) 0%, transparent 50%);
         }
 
         a { color: var(--primary-light); text-decoration: none; transition: var(--transition); }
@@ -71,7 +71,7 @@
            NAVBAR
         ============================================================ */
         .navbar {
-            background: rgba(26,26,46,0.85);
+            background: rgba(9,9,11,0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             position: sticky;
@@ -102,13 +102,14 @@
         .brand-icon {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
-            box-shadow: 0 0 15px rgba(99,102,241,0.4);
+            color: var(--bg-base);
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         .nav-links {
@@ -131,7 +132,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            background: rgba(99,102,241,0.15);
+            background: rgba(255,255,255,0.1);
             color: var(--primary-light);
         }
 
@@ -155,7 +156,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #e2e8f0 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -194,25 +195,25 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(99,102,241,0.35);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-base);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.15);
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99,102,241,0.45);
-            color: #fff;
+            box-shadow: 0 8px 25px rgba(255,255,255,0.25);
+            color: var(--bg-card);
         }
 
         .btn-secondary {
-            background: rgba(99,102,241,0.12);
-            color: var(--primary-light);
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
             border: 1px solid var(--border);
         }
         .btn-secondary:hover {
-            background: rgba(99,102,241,0.22);
+            background: rgba(255,255,255,0.1);
             border-color: var(--border-hover);
-            color: var(--primary-light);
+            color: var(--text-primary);
         }
 
         .btn-danger {
@@ -330,7 +331,7 @@
 
         .form-control:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
         }
 
         .form-control.is-invalid {
@@ -338,7 +339,7 @@
             box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
         }
 
-        .form-control option { background: #1a1a2e; }
+        .form-control option { background: #09090b; }
 
         textarea.form-control { resize: vertical; min-height: 90px; }
 
@@ -366,7 +367,7 @@
         }
 
         thead th {
-            background: rgba(99,102,241,0.1);
+            background: rgba(255,255,255,0.05);
             padding: 14px 16px;
             text-align: left;
             font-size: 0.78rem;
@@ -379,13 +380,13 @@
         }
 
         tbody tr {
-            border-bottom: 1px solid rgba(99,102,241,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             transition: var(--transition);
         }
 
         tbody tr:last-child { border-bottom: none; }
 
-        tbody tr:hover { background: rgba(99,102,241,0.05); }
+        tbody tr:hover { background: rgba(255,255,255,0.03); }
 
         tbody td {
             padding: 13px 16px;
@@ -466,20 +467,17 @@
             font-weight: 500;
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            background: var(--bg-card);
-            transition: var(--transition);
         }
-
         .pagination-wrap a:hover {
             border-color: var(--primary);
-            color: var(--primary-light);
-            background: rgba(99,102,241,0.1);
+            color: #000;
+            background: var(--primary);
         }
 
         .pagination-wrap [aria-current="page"] > span {
             background: var(--primary);
             border-color: var(--primary);
-            color: #fff;
+            color: #000;
         }
 
         /* ============================================================
@@ -545,7 +543,7 @@
             flex-shrink: 0;
         }
 
-        .stat-icon-purple { background: rgba(99,102,241,0.15); color: var(--primary-light); }
+        .stat-icon-purple { background: rgba(255,255,255,0.1); color: var(--text-primary); }
         .stat-icon-blue   { background: rgba(6,182,212,0.15);  color: #67e8f9; }
         .stat-icon-green  { background: rgba(16,185,129,0.15); color: #6ee7b7; }
         .stat-icon-pink   { background: rgba(236,72,153,0.15); color: #f9a8d4; }
@@ -690,7 +688,7 @@
             </li>
             <li style="margin-left: 1rem; border-left: 1px solid var(--border); padding-left: 1rem; display: flex; align-items: center; gap: 10px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary-light); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--text-primary); color: #000; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
                         {{ mb_strtoupper(mb_substr(Auth::user()->name, 0, 1)) }}
                     </div>
                     <div style="display: flex; flex-direction: column;">
